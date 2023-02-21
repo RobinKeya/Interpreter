@@ -63,6 +63,9 @@ class Lexer(object):
         return Token(EOF,None)
     
 #Both parsing and interpretation 
+class Parse(object):
+    def __init__(self, lexer):
+        self.lexer = lexer
 class Interpreter(object):
     def __init__(self,lexer):
         self.lexer = lexer
@@ -132,9 +135,14 @@ def main():
         lexer = Lexer(bool_exp)
         interpreter = Interpreter(lexer)
         result = interpreter.expr()
+        if result == True:
+            result = 'T'
+        elif result ==False:
+            result = 'F'
         print(result)
     
 
 if __name__ == '__main__':
     main()
+    
     
